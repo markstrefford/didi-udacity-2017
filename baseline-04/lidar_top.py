@@ -241,7 +241,7 @@ def draw_box3d_on_top(image, boxes3d, color=(255,255,255)):
 
 if __name__ == '__main__':
 
-    base_dir = '﻿/media/sf_vol/didi/dataset2/15pc'
+    base_dir          = '/media/sf_vol/didi/dataset2/15pc'
     lidar_dir         = base_dir + '/pointcloud'
     gt_boxes3d_dir    = base_dir + '/processed/gt_boxes3d'
     lidar_top_dir     = base_dir + '/processed/lidar_top'
