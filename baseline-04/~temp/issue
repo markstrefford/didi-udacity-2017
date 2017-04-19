@@ -1,0 +1,112 @@
+# this is my personal note. you can ignore this
+
+
+------------------------------------------------------------------------------------
+after upgrade from python 3.5 to 3.6, everything cannot work!!!
+------------------------------------------------------------------------------------
+[problem]
+
+conda install -c menpo opencv3=3.2.0
+Fetching package metadata ...........
+Solving package specifications: .
+
+
+UnsatisfiableError: The following specifications were found to be in conflict:
+  - opencv3 3.2.0* -> python 3.4* -> openssl 1.0.1*
+  - opencv3 3.2.0* -> pyth./on 3.4* -> xz 5.0.5
+  - python 3.6*
+Use "conda info <package>" to see the dependencies for each package.
+
+------------------------------------------------------------------------------------
+[solution]
+1.  opencv
+install from conda-forge:
+conda install -c conda-forge opencv
+
+
+2. mayavi
+build from scratch/
+http://www.math.univ-paris13.fr/~cuvelier/mainsu26.html
+
+pip3 install mayavi
+
+
+???conda install pyqt=4.12
+conda install -c anaconda pyqt=4.11.4
+
+
+https://pypi.python.org/pypi/mayavi
+https://www.scivision.co/mayavi-qt5-create-conda-env-qt4/
+
+http://matplotlib.org/examples/pylab_examples/simple_plot.html
+import matplotlib.pyplot as plt
+import numpy as np
+
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2*np.pi*t)
+plt.plot(t, s)
+
+plt.xlabel('time (s)')
+plt.ylabel('voltage (mV)')
+plt.title('About as simple as it gets, folks')
+plt.grid(True)
+plt.savefig("test.png")
+plt.show()
+
+
+import sys
+from PyQt4.QtGui import *
+
+# Create an PyQT4 application object.
+a = QApplication(sys.argv)
+
+# The QWidget widget is the base class of all user interface objects in PyQt4.
+w = QWidget()
+
+# Set window size.
+w.resize(320, 240)
+
+# Set window title
+w.setWindowTitle("Hello World!")
+
+# Show window
+w.show()
+
+sys.exit(a.exec_())
+
+
+# Author: Gael Varoquaux <gael.varoquaux@normalesup.org>
+# Copyright (c) 2007, Enthought, Inc.
+# License: BSD Style.
+
+
+from numpy import sin, cos, mgrid, pi, sqrt
+from mayavi import mlab
+
+mlab.figure(fgcolor=(0, 0, 0), bgcolor=(1, 1, 1))
+u, v = mgrid[- 0.035:pi:0.01, - 0.035:pi:0.01]
+
+X = 2 / 3. * (cos(u) * cos(2 * v)
+        + sqrt(2) * sin(u) * cos(v)) * cos(u) / (sqrt(2) -
+                                                 sin(2 * u) * sin(3 * v))
+Y = 2 / 3. * (cos(u) * sin(2 * v) -
+        sqrt(2) * sin(u) * sin(v)) * cos(u) / (sqrt(2)
+        - sin(2 * u) * sin(3 * v))
+Z = -sqrt(2) * cos(u) * cos(u) / (sqrt(2) - sin(2 * u) * sin(3 * v))
+S = sin(u)
+
+mlab.mesh(X, Y, Z, scalars=S, colormap='YlGnBu', )
+
+# Nice view from the front
+mlab.view(.0, - 5.0, 4)
+mlab.show()
+
+
+>>> import matplotlib
+>>> matplotlib.get_backend()
+'TkAgg'
+http://matplotlib.org/users/customizing.html#customizing-matplotlib
+
+
+https://www.scivision.co/anaconda-python-opencv3/
+conda install -c menpo opencv3
